@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bilangan Rasional - Matematika MTs Kelas 7</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f4f8;
+  color: #1a202c;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+header {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  padding: 24px 20px;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+header p {
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+.section {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-left: 5px solid #2563eb;
+}
+
+.section h2 {
+  font-size: 1.4rem;
+  color: #1d4ed8;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section h2 .icon {
+  font-size: 1.6rem;
+}
+
+.objective-list {
+  list-style: none;
+  padding: 0;
+}
+
+.objective-list li {
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  background: #eff6ff;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  border-left: 3px solid #3b82f6;
+}
+
+.trigger-box {
+  background: #fef3c7;
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+  padding: 18px;
+  font-size: 1.15rem;
+  text-align: center;
+  font-weight: 600;
+  color: #92400e;
+}
+
+.trigger-box .emoji {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Step-by-step explanation */
+.step-container {
+  position: relative;
+}
+
+.step {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.step.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step p {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.step .highlight {
+  background: #dbeafe;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-align: center;
+  color: #1e40af;
+  margin: 12px 0;
+  border: 2px solid #93c5fd;
+}
+
+.step .fraction-display {
+  font-size: 2rem;
+  text-align: center;
+  margin: 16px 0;
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #ffffff;
+  background: #2563eb;
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
+}
+
+.btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-next {
+  margin-top: 14px;
+}
+
+.btn-prev {
+  background: #6b7280;
+  margin-right: 8px;
+  box-shadow: 0 3px 8px rgba(107, 114, 128, 0.3);
+}
+
+.btn-prev:hover {
+  background: #4b5563;
+}
+
+.step-indicator {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* Interactive Visualization */
+.visual-box {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+}
+
+.slider-group {
+  margin: 16px 0;
+}
+
+.slider-group label {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #374151;
+}
+
+.slider-group input[type="range"] {
+  width: 100%;
+  max-width: 300px;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #cbd5e1;
+  border-radius: 4px;
+  outline: none;
+}
+
+.slider-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2563eb;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.4);
+}
+
+.slider-group input[type="range"]::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2563eb;
+  cursor: pointer;
+  border: none;
+}
+
+.slider-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1d4ed8;
+  margin: 8px 0;
+}
+
+.bar-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.bar-segment {
+  width: 40px;
+  height: 60px;
+  border: 2px solid #374151;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.bar-segment.filled {
+  background: #3b82f6;
+  border-color: #1d4ed8;
+}
+
+.bar-segment.empty {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+}
+
+.decimal-display {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #059669;
+  margin-top: 12px;
+  background: #ecfdf5;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.percent-display {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #7c3aed;
+  margin-top: 8px;
+  background: #f5f3ff;
+  padding: 8px 16px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+/* Examples */
+.example-card {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 14px;
+  transition: border-color 0.3s;
+}
+
+.example-card:hover {
+  border-color: #3b82f6;
+}
+
+.example-card .soal {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.example-card .soal::before {
+  content: "📝 ";
+}
+
+.btn-jawab {
+  background: #059669;
+  padding: 10px 22px;
+  font-size: 1rem;
+  box-shadow: 0 3px 8px rgba(5, 150, 105, 0.3);
+}
+
+.btn-jawab:hover {
+  background: #047857;
+}
+
+.pembahasan {
+  display: none;
+  margin-top: 12px;
+  padding: 14px;
+  background: #ecfdf5;
+  border-radius: 10px;
+  border-left: 4px solid #059669;
+  font-size: 1.05rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.pembahasan.show {
+  display: block;
+}
+
+.pembahasan p {
+  margin-bottom: 6px;
+}
+
+.pembahasan .langkah {
+  background: #d1fae5;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin: 4px 0;
+  font-weight: 600;
+}
+
+/* Summary */
+.summary-box {
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  border: 2px solid #93c5fd;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.summary-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.summary-box li {
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  background: #ffffff;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  border-left: 4px solid #2563eb;
+  font-weight: 500;
+}
+
+.summary-box li::before {
+  content: "✅ ";
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .section {
+    padding: 16px;
+  }
+  
+  .bar-segment {
+    width: 30px;
+    height: 45px;
+  }
+  
+  .slider-value {
+    font-size: 1.5rem;
+  }
+  
+  .fraction-display {
+    font-size: 1.6rem !important;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <h1>🔢 Bilangan Rasional</h1>
+    <p>Matematika MTs Kelas 7</p>
+  </header>
+
+  <!-- TUJUAN PEMBELAJARAN -->
+  <div class="section">
+    <h2><span class="icon">🎯</span> Tujuan Pembelajaran</h2>
+    <ul class="objective-list">
+      <li>Memahami pengertian bilangan rasional.</li>
+      <li>Menyatakan bilangan rasional dalam bentuk pecahan, desimal, dan persen.</li>
+      <li>Mengubah bentuk bilangan rasional dari satu bentuk ke bentuk lain.</li>
+      <li>Menyelesaikan masalah sehari-hari yang melibatkan bilangan rasional.</li>
+    </ul>
+  </div>
+
+  <!-- PERTANYAAN PEMANTIK -->
+  <div class="section">
+    <h2><span class="icon">💡</span> Pertanyaan Pemantik</h2>
+    <div class="trigger-box">
+      <span class="emoji">🍕</span>
+      Kamu membeli satu pizza dan memotongnya menjadi 8 bagian sama besar. Kamu memakan 3 bagian. Berapa bagian pizza yang sudah kamu makan?<br><br>
+      <span style="font-size:1.3rem;">Jawabannya adalah <strong>3/8</strong> bagian pizza!</span><br>
+      Nah, angka 3/8 itu termasuk <strong>bilangan rasional</strong>. Yuk, pelajari lebih lanjut!
+    </div>
+  </div>
+
+  <!-- PENJELASAN BERTAHAP -->
+  <div class="section">
+    <h2><span class="icon">📖</span> Penjelasan Bertahap</h2>
+    <div class="step-container">
+      
+      <!-- Langkah 1 -->
+      <div class="step active" id="step1">
+        <p><strong>Apa itu Bilangan Rasional?</strong></p>
+        <p>Bilangan rasional adalah bilangan yang bisa ditulis sebagai pecahan.</p>
+        <div class="highlight">
+          Bilangan Rasional = <span class="fraction-display" style="display:inline; font-size:1.4rem;">a/b</span><br>
+          dengan a dan b adalah bilangan bulat, dan b ≠ 0
+        </div>
+        <p>Artinya, bilangan rasional bisa ditulis sebagai pembagian dua bilangan bulat.</p>
+        <p><strong>Contoh:</strong> 1/2, 3/4, 5, −7, 0,25, 75%</p>
+        <p>Semua bilangan di atas adalah bilangan rasional!</p>
+        <button class="btn btn-next" onclick="nextStep(2)">Lanjut ▶</button>
+        <div class="step-indicator">Langkah 1 dari 5</div>
+      </div>
+
+      <!-- Langkah 2 -->
+      <div class="step" id="step2">
+        <p><strong>Bentuk-Bentuk Bilangan Rasional</strong></p>
+        <p>Bilangan rasional bisa ditulis dalam 3 bentuk:</p>
+        <div class="highlight">
+          1️⃣ <strong>Pecahan</strong> → contoh: 3/4<br><br>
+          2️⃣ <strong>Desimal</strong> → contoh: 0,75<br><br>
+          3️⃣ <strong>Persen</strong> → contoh: 75%
+        </div>
+        <p>Ketiga bentuk di atas sebenarnya <strong>bilangan yang sama</strong>!</p>
+        <p>3/4 = 0,75 = 75%</p>
+        <button class="btn btn-prev" onclick="nextStep(1)">◀ Kembali</button>
+        <button class="btn btn-next" onclick="nextStep(3)">Lanjut ▶</button>
+        <div class="step-indicator">Langkah 2 dari 5</div>
+      </div>
+
+      <!-- Langkah 3 -->
+      <div class="step" id="step3">
+        <p><strong>Mengubah Pecahan ke Desimal</strong></p>
+        <p>Cara mengubah pecahan ke desimal:</p>
+        <div class="highlight">
+          Bagi pembilang dengan penyebut!
+        </div>
+        <p><strong>Contoh:</strong> 3/4 = 3 ÷ 4 = <strong>0,75</strong></p>
+        <p><strong>Contoh lain:</strong> 1/2 = 1 ÷ 2 = <strong>0,5</strong></p>
+        <p><strong>Contoh lain:</strong> 2/5 = 2 ÷ 5 = <strong>0,4</strong></p>
+        <button class="btn btn-prev" onclick="nextStep(2)">◀ Kembali</button>
+        <button class="btn btn-next" onclick="nextStep(4)">Lanjut ▶</button>
+        <div class="step-indicator">Langkah 3 dari 5</div>
+      </div>
+
+      <!-- Langkah 4 -->
+      <div class="step" id="step4">
+        <p><strong>Mengubah Desimal ke Persen</strong></p>
+        <p>Cara mengubah desimal ke persen:</p>
+        <div class="highlight">
+          Kalikan dengan 100, lalu tambahkan tanda %!
+        </div>
+        <p><strong>Contoh:</strong> 0,75 × 100 = <strong>75%</strong></p>
+        <p><strong>Contoh lain:</strong> 0,5 × 100 = <strong>50%</strong></p>
+        <p><strong>Contoh lain:</strong> 0,4 × 100 = <strong>40%</strong></p>
+        <button class="btn btn-prev" onclick="nextStep(3)">◀ Kembali</button>
+        <button class="btn btn-next" onclick="nextStep(5)">Lanjut ▶</button>
+        <div class="step-indicator">Langkah 4 dari 5</div>
+      </div>
+
+      <!-- Langkah 5 -->
+      <div class="step" id="step5">
+        <p><strong>Mengubah Persen ke Pecahan</strong></p>
+        <p>Cara mengubah persen ke pecahan:</p>
+        <div class="highlight">
+          Bagi dengan 100, lalu sederhanakan!
+        </div>
+        <p><strong>Contoh:</strong> 75% = 75/100 = <strong>3/4</strong></p>
+        <p><strong>Contoh lain:</strong> 50% = 50/100 = <strong>1/2</strong></p>
+        <p><strong>Contoh lain:</strong> 40% = 40/100 = <strong>2/5</strong></p>
+        <p style="margin-top:14px; font-weight:700; color:#059669;">🎉 Hebat! Kamu sudah paham dasar bilangan rasional!</p>
+        <button class="btn btn-prev" onclick="nextStep(4)">◀ Kembali</button>
+        <div class="step-indicator">Langkah 5 dari 5</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VISUALISASI INTERAKTIF -->
+  <div class="section">
+    <h2><span class="icon">🎮</span> Visualisasi Interaktif</h2>
+    <p style="margin-bottom:12px; font-size:1.05rem;">Geser slider untuk mengubah pecahan dan lihat hasilnya secara langsung!</p>
+    
+    <div class="visual-box">
+      <div class="slider-group">
+        <label for="numerator">Pembilang (a): <span id="numValue" class="slider-value">3</span></label>
+        <input type="range" id="numerator" min="0" max="10" value="3" oninput="updateVisual()">
+      </div>
+      
+      <div class="slider-group">
+        <label for="denominator">Penyebut (b): <span id="denValue" class="slider-value">4</span></label>
+        <input type="range" id="denominator" min="1" max="10" value="4" oninput="updateVisual()">
+      </div>
+
+      <div class="fraction-display" id="fractionText">3/4</div>
+      
+      <p style="font-size:1rem; color:#6b7280; margin-bottom:8px;">Visualisasi Batang:</p>
+      <div class="bar-visual" id="barVisual"></div>
+
+      <div class="decimal-display" id="decimalText">= 0,75</div>
+      <br>
+      <div class="percent-display" id="percentText">= 75%</div>
+    </div>
+  </div>
+
+  <!-- CONTOH SOAL -->
+  <div class="section">
+    <h2><span class="icon">✏️</span> Contoh Soal Berpembahasan</h2>
+
+    <!-- Soal 1 -->
+    <div class="example-card">
+      <div class="soal">Ubahlah pecahan 2/5 menjadi bentuk desimal dan persen!</div>
+      <button class="btn btn-jawab" onclick="togglePembahasan('pemb1')">Lihat Pembahasan</button>
+      <div class="pembahasan" id="pemb1">
+        <p><strong>Diketahui:</strong> Pecahan 2/5</p>
+        <p><strong>Ditanya:</strong> Bentuk desimal dan persen</p>
+        <p><strong>Penyelesaian:</strong></p>
+        <div class="langkah">Langkah 1: Ubah ke desimal → 2 ÷ 5 = 0,4</div>
+        <div class="langkah">Langkah 2: Ubah ke persen → 0,4 × 100 = 40%</div>
+        <p><strong>Jawaban:</strong> 2/5 = <strong>0,4</strong> = <strong>40%</strong></p>
+      </div>
+    </div>
+
+    <!-- Soal 2 -->
+    <div class="example-card">
+      <div class="soal">Ibu membeli 3/4 kg gula. Nyatakan dalam bentuk desimal dan persen!</div>
+      <button class="btn btn-jawab" onclick="togglePembahasan('pemb2')">Lihat Pembahasan</button>
+      <div class="pembahasan" id="pemb2">
+        <p><strong>Diketahui:</strong> 3/4 kg gula</p>
+        <p><strong>Ditanya:</strong> Bentuk desimal dan persen</p>
+        <p><strong>Penyelesaian:</strong></p>
+        <div class="langkah">Langkah 1: Ubah ke desimal → 3 ÷ 4 = 0,75</div>
+        <div class="langkah">Langkah 2: Ubah ke persen → 0,75 × 100 = 75%</div>
+        <p><strong>Jawaban:</strong> 3/4 kg = <strong>0,75 kg</strong> = <strong>75% kg</strong></p>
+      </div>
+    </div>
+
+    <!-- Soal 3 -->
+    <div class="example-card">
+      <div class="soal">Sebuah kelas memiliki 60% siswa yang gemar matematika. Nyatakan dalam bentuk pecahan paling sederhana!</div>
+      <button class="btn btn-jawab" onclick="togglePembahasan('pemb3')">Lihat Pembahasan</button>
+      <div class="pembahasan" id="pemb3">
+        <p><strong>Diketahui:</strong> 60% siswa gemar matematika</p>
+        <p><strong>Ditanya:</strong> Bentuk pecahan paling sederhana</p>
+        <p><strong>Penyelesaian:</strong></p>
+        <div class="langkah">Langkah 1: Ubah ke pecahan → 60% = 60/100</div>
+        <div class="langkah">Langkah 2: Sederhanakan → 60/100 = (60÷20)/(100÷20) = 3/5</div>
+        <p><strong>Jawaban:</strong> 60% = <strong>3/5</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RANGKUMAN -->
+  <div class="section">
+    <h2><span class="icon">📋</span> Rangkuman</h2>
+    <div class="summary-box">
+      <ul>
+        <li>Bilangan rasional adalah bilangan yang bisa ditulis sebagai a/b, dengan a dan b bilangan bulat dan b ≠ 0.</li>
+        <li>Bilangan rasional memiliki 3 bentuk: pecahan, desimal, dan persen.</li>
+        <li>Pecahan ke desimal: bagi pembilang dengan penyebut.</li>
+        <li>Desimal ke persen: kalikan dengan 100, tambah tanda %.</li>
+        <li>Persen ke pecahan: bagi dengan 100, lalu sederhanakan.</li>
+        <li>Contoh: 3/4 = 0,75 = 75% (semuanya bilangan yang sama!).</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>Media Pembelajaran Matematika MTs Kelas 7 | Bilangan Rasional</p>
+    <p>Dibuat untuk membantu belajar dengan menyenangkan 📚</p>
+  </footer>
+
+</div>
+
+<script>
+// Step navigation
+function nextStep(stepNum) {
+  const steps = document.querySelectorAll('.step');
+  steps.forEach(s => s.classList.remove('active'));
+  document.getElementById('step' + stepNum).classList.add('active');
+}
+
+// Toggle pembahasan
+function togglePembahasan(id) {
+  const pemb = document.getElementById(id);
+  pemb.classList.toggle('show');
+}
+
+// Interactive visualization
+function updateVisual() {
+  const num = parseInt(document.getElementById('numerator').value);
+  const den = parseInt(document.getElementById('denominator').value);
+  
+  // Update display values
+  document.getElementById('numValue').textContent = num;
+  document.getElementById('denValue').textContent = den;
+  
+  // Update fraction text
+  document.getElementById('fractionText').textContent = num + '/' + den;
+  
+  // Update bar visual
+  const barContainer = document.getElementById('barVisual');
+  barContainer.innerHTML = '';
+  
+  for (let i = 0; i < den; i++) {
+    const segment = document.createElement('div');
+    segment.className = 'bar-segment';
+    if (i < num) {
+      segment.classList.add('filled');
+    } else {
+      segment.classList.add('empty');
+    }
+    barContainer.appendChild(segment);
+  }
+  
+  // Update decimal
+  const decimal = num / den;
+  const decimalRounded = Math.round(decimal * 1000) / 1000;
+  document.getElementById('decimalText').textContent = '= ' + decimalRounded;
+  
+  // Update percent
+  const percent = Math.round(decimal * 10000) / 100;
+  document.getElementById('percentText').textContent = '= ' + percent + '%';
+}
+
+// Initialize visualization
+updateVisual();
+</script>
+
+</body>
+</html>
